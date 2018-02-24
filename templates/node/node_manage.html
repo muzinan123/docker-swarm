@@ -1,0 +1,81 @@
+{% extends "../head.html" %}
+{% block div %}
+
+<script type="text/javascript">
+$(document).ready(function() {
+    $('#nodelist').DataTable();
+} );
+</script>
+<div id="content">
+<head>
+    <ul>
+        <h2>节点管理</h2>
+    </ul>
+    <div >
+        <input type="button" class="btn btn-default" onclick="javascript:window.location.href='/nodeadd'" value="新增"> 
+    </div>
+</head>
+
+<table id="nodelist" class="display" cellspacing="0" width="100%">
+        <thead>
+        <tr>
+            <th >序号</th>
+            <th >节点名</th>
+            <th >节点IP</th>
+            <th >监听端口</th>
+            <th >CPU数</th>
+            <th >内存数</th>
+            <th >镜像数</th>
+            <th >状态</th>
+            <th >节点组</th>
+            <th >容器数</th>
+            <th >系统版本</th>
+            <th >内核版本</th>
+            <th >Docker版本</th>
+            <th >操作</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for node in node_data %}
+        <tr>
+            <td>{{node}}</td>
+            <td>{{node_data[node]["name"]}}</td>
+            <td>{{node_data[node]["node_ip"]}}</td>
+            <td>{{node_data[node]["port"]}}</td>
+            <td>{{node_data[node]["cpus"]}}</td>
+            <td>{{node_data[node]["mem"]}}</td>
+            <td>{{node_data[node]["images"]}}</td>
+            <td>{{node_data[node]["state"]}}</td>
+            <td>{{node_data[node]["node_group"]}}</td>
+            <td>{{node_data[node]["containers"]}}</td>
+            <td>{{node_data[node]["os_version"]}}</td>
+            <td>{{node_data[node]["kernel_version"]}}</td>
+            <td>{{node_data[node]["docker_version"]}}</td>
+            <th><a data-toggle="modal" href="/nodemodify?action=modify&node_ip={{node_data[node]["node_ip"]}}" data-target="#myModal"><img src='static/images/modify.png' alt='修改' title='修改' /><a onClick="return confirm('注意：确定要删除此条目吗？')" href="/nodemodify?action=delete&node_ip={{node_data[node]["node_ip"]}}"><img src='static/images/remove.png' alt='删除' title='删除' /></a></th>
+        </tr>
+        {% end %}
+        </tbody>
+</table>
+</div>
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+   <div class="modal-dialog">
+      <div class="modal-content">
+         <div class="modal-header">
+            <h4 class="modal-title" id="myModalLabel"> 
+                 容器修改
+            </h4>
+         </div>
+         <div class="modal-body">
+         </div>
+      </div><!-- /.modal-content -->
+</div><!-- /.modal -->
+</div>
+
+<script type="text/javascript">
+    $("#myModal").on("hidden.bs.modal", function() {
+        $(this).removeData("bs.modal");
+    });
+</script>
+
+{% end %}

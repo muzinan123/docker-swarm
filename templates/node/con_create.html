@@ -1,0 +1,83 @@
+{% extends "../head.html" %}
+{% block div %}
+
+<head>
+    <ul>
+        <h2>创建容器</h2>
+    </ul>
+</head>
+
+<form class="form-horizontal" action="/concreate?node_ip={{node_ip}}" method="post">
+    <div class="form-group">
+      <label for="firstname" class="col-sm-1 control-label">CPU时间</label>
+      <div class="col-sm-10">
+         <input type="text" class="form-control" name="cpuperiod" value="100000" readonly/>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="firstname" class="col-sm-1 control-label">CPU配额</label>
+      <div class="col-sm-10">
+         <select name='cpuquota'>
+                <option >50000</option>
+                <option >100000</option>
+                <option >200000</option>
+                <option >400000</option>
+                <option >800000</option>
+                <option >1600000</option>
+                <option >2400000</option>
+                <option >3200000</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="firstname" class="col-sm-1 control-label">CPU相对值</label>
+      <div class="col-sm-10">
+         <select name='cpushares'>
+                <option >64</option>
+                <option >128</option>
+                <option >256</option>
+                <option >512</option>
+                <option >1024</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="firstname" class="col-sm-1 control-label">内存大小</label>
+      <div class="col-sm-10">
+         <select name='memory'>
+                <option >1073741824</option>
+                <option >2147483648</option>
+                <option >3221225472</option>
+                <option >4294967296</option>
+                <option >6442450944</option>
+                <option >8589934592</option>
+                <option >12884901888</option>
+                <option >17179869184</option>
+                <option >34359738368</option>
+                <option >68719476736</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="firstname" class="col-sm-1 control-label">运行命令</label>
+      <div class="col-sm-10">
+         <input type="text" class="form-control" name="cmd" placeholder="/usr/sbin/sshd -D" />
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="firstname" class="col-sm-1 control-label">容器镜像</label>
+      <div class="col-sm-10">
+        <select name="image">
+         {% for image in images %}
+            <option >{{image[0]}}</option>
+         {% end %}
+        </select>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-sm-offset-1 col-sm-10">
+         <button type="submit" class="btn btn-default" name="con_create">创建容器</button>
+      </div>
+    </div>
+</form>
+{% end %}

@@ -1,0 +1,57 @@
+{% extends "../head.html" %}
+{% block div %}
+
+<head>
+    <ul>
+        <h2>容器操作</h2>
+    </ul>
+</head>
+
+<div>
+    <input type="button" class="btn btn-primary" onclick="javascript:window.location.href='/constart?node_ip={{node_ip}}&port={{node_port}}&con_id={{con_id}}'" value="启动">
+    <input type="button" class="btn btn-primary" onclick="javascript:window.location.href='/constop?node_ip={{node_ip}}&port={{node_port}}&con_id={{con_id}}'" value="停止">
+    <input type="button" class="btn btn-primary" onclick="javascript:window.location.href='/conrestart?node_ip={{node_ip}}&port={{node_port}}&con_id={{con_id}}'" value="重启">
+    <input type="button" class="btn btn-primary" onclick="javascript:window.location.href='/condestroy?node_ip={{node_ip}}&port={{node_port}}&con_id={{con_id}}'" value="销毁">
+</div>
+
+<table class="table">
+    <tbody>
+        <tr>
+            <td >容器ID</td>
+            <td>{{con_data[1]['id_num']}}</td>
+            <td >节点IP</td>
+            <td>{{con_data[1]['node_ip']}}</td>
+        </tr>
+        <tr>
+            <td>容器IP</td>
+            <td>{{con_data[1]['con_ip']}}</td>
+            <td>容器名</td>
+            <td>{{con_data[1]['name']}}</td>
+        </tr> 
+        <tr>
+            <td>容器镜像</td>
+            <td>{{con_data[1]['image']}}</td>
+            <td>创建时间</td>
+            <td>{{con_data[1]['created']}}</td>
+        </tr> 
+        <tr>
+            <td>容器状态</td>
+            <td>{{con_data[1]['state']}}</td>
+            <td>容器内存</td>
+            <td>{{con_data[1]['memory']}}</td>
+        </tr>
+        <tr>
+            <td>CPU时间</td>
+            <td>{{con_data[1]['cpuperiod']}}</td>
+            <td>CPU配额</td>
+            <td>{{con_data[1]['cpuquota']}}</td>
+        </tr>
+        <tr>
+            <td >HostName</td>
+            <td>{{con_data[1]['hostname']}}</td>
+            <td >运行命令</td>
+            <td>{{con_data[1]['cmd']}}</td>
+        </tr>
+    </tbody>
+</table>
+{% end %}

@@ -1,0 +1,54 @@
+{% block div %}
+
+<head>
+    <ul>
+        <h2>容器用途修改</h2>
+    </ul>
+</head>
+
+<form class="form-horizontal" action="/conmodify?con_id={{single_con_usage_data[1]['con_id']}}" method="post">
+    <div class="form-group">
+      <label for="firstname" class="col-sm-2 control-label">容器ID</label>
+      <div class="col-sm-10">
+         <input type="text" class="form-control" name="con_id" value="{{single_con_usage_data[1]['con_id']}}" disabled/>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="firstname" class="col-sm-2 control-label">容器IP</label>
+      <div class="col-sm-10">
+         <input type="text" class="form-control" name="con_ip" value="{{single_con_usage_data[1]['con_ip']}}" disabled/>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="firstname" class="col-sm-2 control-label">节点IP</label>
+      <div class="col-sm-10">
+         <input type="text" class="form-control" name="node_ip" value="{{single_con_usage_data[1]['node_ip']}}" disabled/>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="firstname" class="col-sm-2 control-label">用户</label>
+      <div class="col-sm-10">
+         <input type="text" class="form-control" name="user_name" value="{{single_con_usage_data[1]['user_name']}}" />
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="firstname" class="col-sm-2 control-label">应用</label>
+      <div class="col-sm-10">
+         <input type="text" class="form-control" name="con_app" value="{{single_con_usage_data[1]['con_app']}}" />
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="firstname" class="col-sm-2 control-label">描述</label>
+      <div class="col-sm-10">
+         <input type="text" class="form-control" name="con_desc" value="{{single_con_usage_data[1]['con_desc']}}" />
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-sm-offset-1 col-sm-10">
+         <button type="submit" class="btn btn-default" name="modify_con_usage">提交</button>
+         <button type="cancle" class="btn btn-default" data-dismiss="modal">关闭</button>
+      </div>
+    </div>
+</form>
+
+{% end %}
